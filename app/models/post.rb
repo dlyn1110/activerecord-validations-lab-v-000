@@ -5,10 +5,10 @@ class Post < ActiveRecord::Base
     validates :category, inclusion: { in: %w(Fiction Non-Fiction) }
 end
 
-class CustomValidator < ActiveModel::EachValidator
-    def validate_each(record, attribute,value)
-      unless value =~ /(Won't Believe|Secret|Top \d|Guess)/
-        record.errors[attribute] << "non_clickbait"
-      end
-    end
-  end
+def clickbait?
+       if !title.to_s.include?("Won't Believe" || "Secret" || "Top [number]" || "Guess")
+           errors.add(:title, "Must include clickbait")
+       end
+   end
+
+end

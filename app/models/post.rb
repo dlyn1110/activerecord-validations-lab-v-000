@@ -8,7 +8,6 @@ end
 def clickbait?
        if !title.to_s.include?("Won't Believe" || "Secret" || "Top [number]" || "Guess")
            errors.add(:title, "Must include clickbait")
-       end
-   end
-
+    end
+  end
 end

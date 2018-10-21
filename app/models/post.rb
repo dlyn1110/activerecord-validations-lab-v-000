@@ -6,7 +6,7 @@ class Post < ActiveRecord::Base
 end
 
 class CustomValidator < ActiveModel::EachValidator
-    def validate_each(record, attribute, value)
+    def validate_each(value)
       unless value =~ /(Won't Believe|Secret|Top \d|Guess)/
         record.errors[attribute] << ("non_clickbait")
       end
